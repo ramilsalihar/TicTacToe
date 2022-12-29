@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/ramil.salihar/StudioProjects/Tictactoe_in_Android/app/src/main/res/drawable/ic_launcher_background.xml" value="0.178" />
+        <entry key="..\:/Users/ramil.salihar/StudioProjects/Tictactoe_in_Android/app/src/main/res/drawable/radio_button_unchecked.xml" value="0.178" />
+        <entry key="..\:/Users/ramil.salihar/StudioProjects/Tictactoe_in_Android/app/src/main/res/layout/activity_ai_choose_symbol.xml" value="0.1408514492753623" />
+        <entry key="..\:/Users/ramil.salihar/StudioProjects/Tictactoe_in_Android/app/src/main/res/layout/activity_ai_game.xml" value="0.1408514492753623" />
+        <entry key="..\:/Users/ramil.salihar/StudioProjects/Tictactoe_in_Android/app/src/main/res/layout/activity_aiget_player_name.xml" value="0.1408514492753623" />
+        <entry key="..\:/Users/ramil.salihar/StudioProjects/Tictactoe_in_Android/app/src/main/res/layout/activity_choose_symbol.xml" value="0.1408514492753623" />
+        <entry key="..\:/Users/ramil.salihar/StudioProjects/Tictactoe_in_Android/app/src/main/res/layout/activity_offline_game.xml" value="0.1408514492753623" />
+        <entry key="..\:/Users/ramil.salihar/StudioProjects/Tictactoe_in_Android/app/src/main/res/layout/activity_offline_game_menu.xml" value="0.1408514492753623" />
+        <entry key="..\:/Users/ramil.salihar/StudioProjects/Tictactoe_in_Android/app/src/main/res/layout/activity_offline_get_players_names.xml" value="0.1408514492753623" />
+        <entry key="..\:/Users/ramil.salihar/StudioProjects/Tictactoe_in_Android/app/src/main/res/layout/activity_settings.xml" value="0.1408514492753623" />
+        <entry key="..\:/Users/ramil.salihar/StudioProjects/Tictactoe_in_Android/app/src/main/res/layout/celebrate_dialog.xml" value="0.1408514492753623" />
+        <entry key="..\:/Users/ramil.salihar/StudioProjects/Tictactoe_in_Android/app/src/main/res/layout/draw_dialog.xml" value="0.1408514492753623" />
+        <entry key="..\:/Users/ramil.salihar/StudioProjects/Tictactoe_in_Android/app/src/main/res/layout/quit_dialog.xml" value="0.1408514492753623" />
+        <entry key="..\:/Users/ramil.salihar/StudioProjects/Tictactoe_in_Android/app/src/main/res/layout/robot_win_dialog.xml" value="0.1408514492753623" />
+        <entry key="app/src/main/res/drawable/app_main_theme_background.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/back_icon.xml" value="0.2388888888888889" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.13958333333333334" />
+        <entry key="app/src/main/res/drawable/radio_button_checked.xml" value="0.23055555555555557" />
+        <entry key="app/src/main/res/drawable/rounded_corners.xml" value="0.2388888888888889" />
+        <entry key="app/src/main/res/layout/activity_ai_choose_symbol.xml" value="0.1203125" />
+        <entry key="app/src/main/res/layout/activity_ai_game.xml" value="0.109375" />
+        <entry key="app/src/main/res/layout/activity_aiget_player_name.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/activity_choose_symbol.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.24375" />
+        <entry key="app/src/main/res/layout/activity_offline_game.xml" value="0.2296875" />
+        <entry key="app/src/main/res/layout/activity_offline_game_menu.xml" value="0.109375" />
+        <entry key="app/src/main/res/layout/activity_offline_get_players_names.xml" value="0.24375" />
+        <entry key="app/src/main/res/layout/activity_settings.xml" value="0.24375" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/celebrate_dialog.xml" value="0.145935960591133" />
+        <entry key="app/src/main/res/layout/draw_dialog.xml" value="0.24375" />
+        <entry key="app/src/main/res/layout/quit_dialog.xml" value="0.24375" />
+        <entry key="app/src/main/res/layout/robot_win_dialog.xml" value="0.24375" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
