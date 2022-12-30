@@ -43,7 +43,7 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
     private TextView playerOneWins, playerTwoWins;
     Vibrator vibrator;
 
-    Dialog dialog , drawdialog,quitdialog;
+    Dialog dialog , drawDialog, quitDialog;
 
     int playerOneWinCount=0;
     int playerTwoWinCount=0;
@@ -79,8 +79,8 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
 
 
         dialog = new Dialog(this);
-        drawdialog = new Dialog(this);
-        quitdialog = new Dialog(this);
+        drawDialog = new Dialog(this);
+        quitDialog = new Dialog(this);
 
 
         vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
@@ -561,18 +561,18 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
     private void    DrawDialogfun() {
 
 
-        drawdialog.setContentView(R.layout.draw_dialog);
-        drawdialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        drawDialog.setContentView(R.layout.draw_dialog);
+        drawDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.setCanceledOnTouchOutside(false);
 
 
-        Button quitBtn = drawdialog.findViewById(R.id.offline_game_draw_quit_btn);
-        Button continueBtn = drawdialog.findViewById(R.id.offline_game_draw_continue_btn);
+        Button quitBtn = drawDialog.findViewById(R.id.offline_game_draw_quit_btn);
+        Button continueBtn = drawDialog.findViewById(R.id.offline_game_draw_continue_btn);
 
         quitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                drawdialog.dismiss();
+                drawDialog.dismiss();
                 Intent intent = new Intent(OfflineGameActivity.this, OfflineGameMenuActivity.class);
                 startActivity(intent);
             }
@@ -581,11 +581,11 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                drawdialog.dismiss();
+                drawDialog.dismiss();
                 Restart();
             }
         });
-        drawdialog.show();
+        drawDialog.show();
     }
 
 
@@ -629,18 +629,18 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
     private void    quitDialogfun() {
 
 
-        quitdialog.setContentView(R.layout.quit_dialog);
-        quitdialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        quitdialog.setCanceledOnTouchOutside(false);
+        quitDialog.setContentView(R.layout.quit_dialog);
+        quitDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        quitDialog.setCanceledOnTouchOutside(false);
 
 
-        Button quitBtn = quitdialog.findViewById(R.id.quit_btn);
-        Button continueBtn = quitdialog.findViewById(R.id.continue_btn);
+        Button quitBtn = quitDialog.findViewById(R.id.quit_btn);
+        Button continueBtn = quitDialog.findViewById(R.id.continue_btn);
 
         quitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                quitdialog.dismiss();
+                quitDialog.dismiss();
                 Intent intent = new Intent(OfflineGameActivity.this, OfflineGameMenuActivity.class);
                 startActivity(intent);
             }
@@ -649,10 +649,10 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                quitdialog.dismiss();
+                quitDialog.dismiss();
             }
         });
-        quitdialog.show();
+        quitDialog.show();
     }
 
 }
