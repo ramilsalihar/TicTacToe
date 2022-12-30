@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Tictactoe</string>
+    <string name="todo">TODO</string>
+    <string name="pick_your_side">Pick your side</string>
+</resources>

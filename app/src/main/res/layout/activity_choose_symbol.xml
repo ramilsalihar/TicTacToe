@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10"
+    android:background="@color/white"
+    tools:context=".ChooseSymbolActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            tools:ignore="NestedWeights" />
+
+        <ImageView
+            android:id="@+id/pick_side_back_btn"
+            android:layout_width="0dp"
+            android:padding="2dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/back_icon"
+            android:contentDescription="@string/todo"
+            tools:ignore="ContentDescription" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8.5" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/pick_your_side"
+        android:layout_gravity="center"
+        android:fontFamily="@font/poppins_medium"
+        android:textStyle="bold"
+        android:textColor="#454545"
+        android:textSize="20sp"
+        android:gravity="center" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.75" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.25"
+            tools:ignore="NestedWeights" />
+
+        <ImageView
+            android:id="@+id/pick_side_cross_img"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3.5"
+            android:padding="10dp"
+            android:src="@drawable/cross"
+            android:contentDescription="@string/todo"
+            tools:ignore="ContentDescription" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5" />
+
+        <ImageView
+            android:id="@+id/pick_side_circle_img"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3.5"
+            android:alpha=".4"
+            android:src="@drawable/circle"
+            android:contentDescription="TODO"
+            tools:ignore="ContentDescription,HardcodedText" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.25" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5" />
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.25"
+            tools:ignore="NestedWeights" />
+
+        <ImageView
+            android:id="@+id/pick_side_cross_radio"
+            android:layout_width="0dp"
+            android:padding="15dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3.5"
+            android:src="@drawable/radio_button_checked"
+            android:contentDescription="@string/todo"
+            tools:ignore="ContentDescription" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5" />
+
+        <ImageView
+            android:id="@+id/pick_side_circle_radio"
+            android:layout_width="0dp"
+            android:padding="15dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3.5"
+            android:src="@drawable/radio_button_unchecked"
+            android:contentDescription="@string/todo"
+            tools:ignore="ContentDescription" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.25" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.75" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/pick_side_continue_btn"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.85"
+        android:layout_gravity="center"
+        android:padding="2dp"
+        android:gravity="center"
+        android:text="Continue"
+        android:textAllCaps="false"
+        android:textSize="21sp"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="#454545"
+        android:layout_marginLeft="110dp"
+        android:background="@drawable/button_2"
+        android:layout_marginRight="110dp"
+        tools:ignore="HardcodedText" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.65" />
+
+</LinearLayout>
