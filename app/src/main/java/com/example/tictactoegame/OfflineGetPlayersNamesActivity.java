@@ -70,6 +70,14 @@ public class OfflineGetPlayersNamesActivity extends AppCompatActivity implements
             }
         });
 
+        BackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                onBackPressed();
+            }
+        });
+
 
         playerTwoButton.setOnTouchListener(this);
         playerTwoButton.setOnClickListener(new View.OnClickListener() {

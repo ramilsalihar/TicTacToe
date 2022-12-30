@@ -2,6 +2,7 @@ package com.example.tictactoegame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -11,15 +12,10 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import java.util.Objects;
-
 public class ChooseSymbolActivity extends AppCompatActivity implements View.OnTouchListener {
 
 
-    private ImageView CrossImg;
-    private ImageView CrossRadioImg;
-    private ImageView CircleImg;
-    private ImageView CircleRadioImg;
+    private ImageView BackBtn , CrossImg , CrossRadioImg , CircleImg , CircleRadioImg;
     private Button ContinueBtn;
 
     int PICK_SIDE ;
@@ -27,20 +23,21 @@ public class ChooseSymbolActivity extends AppCompatActivity implements View.OnTo
     private String playerTwo;
 
 
-     @Override
+    @SuppressLint("ClickableViewAccessibility")
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
-        Objects.requireNonNull(getSupportActionBar()).hide(); // hide the title bar
+        getSupportActionBar().hide(); // hide the title bar
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
         setContentView(R.layout.activity_choose_symbol);
 
-         playerOne = getIntent().getStringExtra("p1");
-         playerTwo = getIntent().getStringExtra("p2");
+        playerOne = getIntent().getStringExtra("p1");
+        playerTwo = getIntent().getStringExtra("p2");
 
-         ImageView backBtn = (ImageView) findViewById(R.id.pick_side_back_btn);
+        BackBtn= (ImageView) findViewById(R.id.pick_side_back_btn);
         CrossImg= (ImageView) findViewById(R.id.pick_side_cross_img);
         CircleImg= (ImageView) findViewById(R.id.pick_side_circle_img);
         CrossRadioImg= (ImageView) findViewById(R.id.pick_side_cross_radio);
@@ -48,40 +45,62 @@ public class ChooseSymbolActivity extends AppCompatActivity implements View.OnTo
 
         ContinueBtn = (Button) findViewById(R.id.pick_side_continue_btn);
 
-         CrossRadioImg.setOnClickListener(v -> {
+        // CrossRadioImg.setOnTouchListener(this);
+        CrossRadioImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-             PICK_SIDE = 0;
-             CrossRadioImg.setImageResource(R.drawable.radio_button_checked);
-             CircleRadioImg.setImageResource(R.drawable.radio_button_unchecked);
-             CircleImg.setAlpha(0.3f);
-             CrossImg.setAlpha(1.0f);
-         });
+                PICK_SIDE = 0;
+                CrossRadioImg.setImageResource(R.drawable.radio_button_checked);
+                CircleRadioImg.setImageResource(R.drawable.radio_button_unchecked);
+                CircleImg.setAlpha(0.3f);
+                CrossImg.setAlpha(1.0f);
+                //Intent intent = new Intent(.this,Ch.class);
+                // startActivity(intent);
+            }
+        });
 
-         CircleRadioImg.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-
-
-                 PICK_SIDE= 1;
-                 CircleRadioImg.setImageResource(R.drawable.radio_button_checked);
-                 CrossRadioImg.setImageResource(R.drawable.radio_button_unchecked);
-                 CrossImg.setAlpha(0.3f);
-                 CircleImg.setAlpha(1.0f);
-             }
-         });
+        // CircleRadioImg.setOnTouchListener(this);
+        CircleRadioImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
 
+                PICK_SIDE= 1;
+                CircleRadioImg.setImageResource(R.drawable.radio_button_checked);
+                CrossRadioImg.setImageResource(R.drawable.radio_button_unchecked);
+                CrossImg.setAlpha(0.3f);
+                CircleImg.setAlpha(1.0f);
+
+                //Intent intent = new Intent(.this,Ch.class);
+                // startActivity(intent);
+            }
+        });
+
+        BackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+                onBackPressed();
+                //Intent intent = new Intent(.this,Ch.class);
+                // startActivity(intent);
+            }
+        });
+
+        ContinueBtn.setOnTouchListener(this);
         ContinueBtn.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
 
-                 Intent intent = new Intent(    ChooseSymbolActivity.this,OfflineGameActivity.class);
-                 intent.putExtra("p1",playerOne);
-                 intent.putExtra("p2",playerTwo);
-                 intent.putExtra("ps",PICK_SIDE);
-                  startActivity(intent);
-             }
-         });
+                Intent intent = new Intent(    ChooseSymbolActivity.this,OfflineGameActivity.class);
+                intent.putExtra("p1",playerOne);
+                intent.putExtra("p2",playerTwo);
+                intent.putExtra("ps",PICK_SIDE);
+                startActivity(intent);
+            }
+        });
     }
 
 

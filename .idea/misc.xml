@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ramil.salihar/StudioProjects/Tictactoe/app/src/main/res/layout/activity_offline_game.xml" value="0.1" />
+        <entry key="..\:/Users/ramil.salihar/StudioProjects/Tictactoe/app/src/main/res/layout/activity_offline_game_menu.xml" value="0.22" />
+        <entry key="..\:/Users/ramil.salihar/StudioProjects/Tictactoe/app/src/main/res/layout/activity_offline_get_players_names.xml" value="0.1" />
         <entry key="..\:/Users/ramil.salihar/StudioProjects/Tictactoe_in_Android/app/src/main/res/drawable/ic_launcher_background.xml" value="0.178" />
         <entry key="..\:/Users/ramil.salihar/StudioProjects/Tictactoe_in_Android/app/src/main/res/drawable/radio_button_unchecked.xml" value="0.178" />
         <entry key="..\:/Users/ramil.salihar/StudioProjects/Tictactoe_in_Android/app/src/main/res/layout/activity_ai_choose_symbol.xml" value="0.1408514492753623" />
