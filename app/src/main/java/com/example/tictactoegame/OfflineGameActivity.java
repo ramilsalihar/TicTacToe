@@ -23,6 +23,8 @@ import android.widget.TextView;
 import com.airbnb.lottie.LottieAnimationView;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
+import java.util.Objects;
+
 public class OfflineGameActivity extends AppCompatActivity implements View.OnClickListener  {
 
 
@@ -70,7 +72,7 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
 
 
        requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
-         getSupportActionBar().hide(); // hide the title bar
+         Objects.requireNonNull(getSupportActionBar()).hide(); // hide the title bar
        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
 
@@ -86,29 +88,29 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
         vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 
         // link all the Boxes with Design (boxes in the activity_game.Xml  has the id so link with each Box)
-        Box_1= (ImageView) findViewById(R.id.img_1);
-        Box_2= (ImageView) findViewById(R.id.img_2);
-        Box_3= (ImageView) findViewById(R.id.img_3);
-        Box_4= (ImageView) findViewById(R.id.img_4);
-        Box_5= (ImageView) findViewById(R.id.img_5);
-        Box_6= (ImageView) findViewById(R.id.img_6);
-        Box_7= (ImageView) findViewById(R.id.img_7);
-        Box_8= (ImageView) findViewById(R.id.img_8);
-        Box_9= (ImageView) findViewById(R.id.img_9);
+        Box_1= findViewById(R.id.img_1);
+        Box_2= findViewById(R.id.img_2);
+        Box_3= findViewById(R.id.img_3);
+        Box_4= findViewById(R.id.img_4);
+        Box_5= findViewById(R.id.img_5);
+        Box_6= findViewById(R.id.img_6);
+        Box_7= findViewById(R.id.img_7);
+        Box_8= findViewById(R.id.img_8);
+        Box_9= findViewById(R.id.img_9);
 
-        ImageView backBtn = (ImageView) findViewById(R.id.offline_game_back_btn);
+        ImageView backBtn = findViewById(R.id.offline_game_back_btn);
 
-        playerOneImg = (CircularImageView) findViewById(R.id.player_one_img);
-        playerTwoImg = (CircularImageView) findViewById(R.id.player_two_img);
-
-
-        TextView playerOneName = (TextView) findViewById(R.id.player_one_name_txt);
-        TextView playerTwoName = (TextView) findViewById(R.id.player_two_name_txt);
-        playerOneWins = (TextView)findViewById(R.id.player_one_win_count_txt);
-        playerTwoWins = (TextView)findViewById(R.id.player_two_won_txt);
+        playerOneImg = findViewById(R.id.player_one_img);
+        playerTwoImg = findViewById(R.id.player_two_img);
 
 
-        // if user click on particular Box the tag basically value of box (Box_1 has vlaue 1,Box_2 has vlaue 2 ,... ) send to the onClick function
+        TextView playerOneName = findViewById(R.id.player_one_name_txt);
+        TextView playerTwoName = findViewById(R.id.player_two_name_txt);
+        playerOneWins = findViewById(R.id.player_one_win_count_txt);
+        playerTwoWins = findViewById(R.id.player_two_won_txt);
+
+
+        // if user click on particular Box the tag basically value of box (Box_1 has value 1,Box_2 has value 2 ,... ) send to the onClick function
         Box_1.setOnClickListener(this);
         Box_2.setOnClickListener(this);
         Box_3.setOnClickListener(this);
@@ -177,12 +179,7 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
             ActivePlayer = 1 ;
         }
 
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               quitDialogfun();
-            }
-        });
+        backBtn.setOnClickListener(v -> quitDialogFun());
 
 
     }
@@ -196,7 +193,7 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
             return;
 
 
-        ImageView clickImg = (ImageView) findViewById(view.getId());
+        ImageView clickImg = findViewById(view.getId());
         // get the tag of button which user click
         int gettingTag = Integer.parseInt(view.getTag().toString());
 
@@ -230,8 +227,6 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
                 playerOneImg.setAlpha(1.0f);
             }
             clickImg.setImageResource(R.drawable.cross);
-           // clickBtn.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.design_default_color_error));
-            // clickBtn.setBackground(getDrawable(android.R.color.holo_red_dark));
 
             storeActivePlayer =ActivePlayer;
             ActivePlayer = Player_0;
@@ -272,9 +267,6 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
 
             }
             clickImg.setImageResource(R.drawable.circle);
-           // clickBtn.setText("O");
-           // clickBtn.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.design_default_color_primary_dark));
-
 
             storeActivePlayer =ActivePlayer;
             ActivePlayer = Player_X;
@@ -289,7 +281,7 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
 
         if(isGameActive)
         {
-            checkdraw();
+            checkDraw();
         }
     }
 
@@ -380,13 +372,7 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
                             final MediaPlayer mp = MediaPlayer.create(this, R.raw.click);
                             mp.start();
                         }
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-
-                                celebrateDialog(0);
-                            }
-                        }, 750);
+                        handler.postDelayed(() -> celebrateDialog(0), 750);
 
 
                        // Toast.makeText(this, "Player X wins", Toast.LENGTH_SHORT).show();
@@ -460,13 +446,7 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
                             final MediaPlayer mp = MediaPlayer.create(this, R.raw.click);
                             mp.start();
                         }
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-
-                                celebrateDialog(1);
-                            }
-                        }, 750);
+                        handler.postDelayed(() -> celebrateDialog(1), 750);
                         //Toast.makeText(this, "Player 0 wins", Toast.LENGTH_SHORT).show();
                     }
                     isGameActive = false;
@@ -478,13 +458,13 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
-    void checkdraw()
+    void checkDraw()
     {
         boolean check = true;
         for(int i =0 ;i<=8;i++){
-            if(filledPos[i]== -1)
-            {
-                check= false;
+            if (filledPos[i] == -1) {
+                check = false;
+                break;
             }
         }
         if(check)
@@ -495,7 +475,7 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
                 final MediaPlayer mp = MediaPlayer.create(this, R.raw.click);
                 mp.start();
             }
-            DrawDialogfun();
+            drawDialogFun();
 
         }
     }
@@ -520,36 +500,27 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
 
 
         Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-              animationView.setVisibility(View.GONE);
-              linearLayout.setVisibility(View.VISIBLE);
-                if(player_check==0) {
-                    playerImg.setImageResource(R.drawable.cross);
-                } else  if(player_check==1) {
-                    playerImg.setImageResource(R.drawable.circle);
-                }
+        handler.postDelayed(() -> {
+          animationView.setVisibility(View.GONE);
+          linearLayout.setVisibility(View.VISIBLE);
+            if(player_check==0) {
+                playerImg.setImageResource(R.drawable.cross);
+            } else  if(player_check==1) {
+                playerImg.setImageResource(R.drawable.circle);
             }
         }, 2300);
 
 
 
-        quitBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                Intent intent = new Intent(OfflineGameActivity.this, OfflineGameMenuActivity.class);
-                startActivity(intent);
-            }
+        quitBtn.setOnClickListener(v -> {
+            dialog.dismiss();
+            Intent intent = new Intent(OfflineGameActivity.this, OfflineGameMenuActivity.class);
+            startActivity(intent);
         });
 
-        continueBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-               Restart();
-            }
+        continueBtn.setOnClickListener(v -> {
+            dialog.dismiss();
+           Restart();
         });
 
         dialog.show();
@@ -558,7 +529,7 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
 
 
 
-    private void    DrawDialogfun() {
+    private void drawDialogFun() {
 
 
         drawDialog.setContentView(R.layout.draw_dialog);
@@ -569,21 +540,15 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
         Button quitBtn = drawDialog.findViewById(R.id.offline_game_draw_quit_btn);
         Button continueBtn = drawDialog.findViewById(R.id.offline_game_draw_continue_btn);
 
-        quitBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawDialog.dismiss();
-                Intent intent = new Intent(OfflineGameActivity.this, OfflineGameMenuActivity.class);
-                startActivity(intent);
-            }
+        quitBtn.setOnClickListener(v -> {
+            drawDialog.dismiss();
+            Intent intent = new Intent(OfflineGameActivity.this, OfflineGameMenuActivity.class);
+            startActivity(intent);
         });
 
-        continueBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawDialog.dismiss();
-                Restart();
-            }
+        continueBtn.setOnClickListener(v -> {
+            drawDialog.dismiss();
+            Restart();
         });
         drawDialog.show();
     }
@@ -626,7 +591,7 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
     }
 
 
-    private void    quitDialogfun() {
+    private void quitDialogFun() {
 
 
         quitDialog.setContentView(R.layout.quit_dialog);
@@ -637,21 +602,13 @@ public class OfflineGameActivity extends AppCompatActivity implements View.OnCli
         Button quitBtn = quitDialog.findViewById(R.id.quit_btn);
         Button continueBtn = quitDialog.findViewById(R.id.continue_btn);
 
-        quitBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                quitDialog.dismiss();
-                Intent intent = new Intent(OfflineGameActivity.this, OfflineGameMenuActivity.class);
-                startActivity(intent);
-            }
+        quitBtn.setOnClickListener(v -> {
+            quitDialog.dismiss();
+            Intent intent = new Intent(OfflineGameActivity.this, OfflineGameMenuActivity.class);
+            startActivity(intent);
         });
 
-        continueBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                quitDialog.dismiss();
-            }
-        });
+        continueBtn.setOnClickListener(v -> quitDialog.dismiss());
         quitDialog.show();
     }
 

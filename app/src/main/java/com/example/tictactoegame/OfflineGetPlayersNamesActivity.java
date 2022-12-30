@@ -17,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import java.util.Objects;
+
 public class OfflineGetPlayersNamesActivity extends AppCompatActivity implements View.OnTouchListener {
 
 
@@ -24,10 +26,9 @@ public class OfflineGetPlayersNamesActivity extends AppCompatActivity implements
 
     private EditText playerOneName, playerTwoName;
     private Button playerOneButton, playerTwoButton;
-    private ImageView BackBtn;
     private LinearLayout playerOneLayout, playerTwoLayout;
 
-    boolean islayout = true;
+    boolean isLayout = true;
 
 
     @SuppressLint("ClickableViewAccessibility")
@@ -37,75 +38,64 @@ public class OfflineGetPlayersNamesActivity extends AppCompatActivity implements
 
 
         requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
-        getSupportActionBar().hide(); // hide the title bar
+        Objects.requireNonNull(getSupportActionBar()).hide(); // hide the title bar
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
 
         setContentView(R.layout.activity_offline_get_players_names);
 
 
-        BackBtn = (ImageView) findViewById(R.id.player_names_back_btn);
-        playerOneName = (EditText) findViewById(R.id.player_one_name_edttxt);
-        playerTwoName = (EditText) findViewById(R.id.player_two_name_edttxt);
-        playerOneButton = (Button) findViewById(R.id.player_one_btn);
-        playerTwoButton = (Button) findViewById(R.id.player_two_btn);
-        playerOneLayout = (LinearLayout) findViewById(R.id.player_one_layout);
-        playerTwoLayout = (LinearLayout) findViewById(R.id.player_two_layout);
+        ImageView backBtn = findViewById(R.id.player_names_back_btn);
+        playerOneName = findViewById(R.id.player_one_name_edttxt);
+        playerTwoName = findViewById(R.id.player_two_name_edttxt);
+        playerOneButton = findViewById(R.id.player_one_btn);
+        playerTwoButton = findViewById(R.id.player_two_btn);
+        playerOneLayout = findViewById(R.id.player_one_layout);
+        playerTwoLayout = findViewById(R.id.player_two_layout);
 
 
         playerOneButton.setOnTouchListener(this);
-        playerOneButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        playerOneButton.setOnClickListener(v -> {
 
-                if (TextUtils.isEmpty(playerOneName.getText().toString())) {
-                    Toast.makeText(getBaseContext(), "Enter Name", Toast.LENGTH_LONG).show();
-                } else {
-                    islayout = false;
-                    playerOneLayout.setVisibility(View.GONE);
-                    playerTwoLayout.setVisibility(View.VISIBLE);
-                    slideUp(playerTwoLayout);
-                    playerOne = playerOneName.getText().toString();
-                }
+            if (TextUtils.isEmpty(playerOneName.getText().toString())) {
+                Toast.makeText(getBaseContext(), "Enter Name", Toast.LENGTH_LONG).show();
+            } else {
+                isLayout = false;
+                playerOneLayout.setVisibility(View.GONE);
+                playerTwoLayout.setVisibility(View.VISIBLE);
+                slideUp(playerTwoLayout);
+                playerOne = playerOneName.getText().toString();
             }
         });
 
-        BackBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                onBackPressed();
-            }
-        });
+        backBtn.setOnClickListener(v -> onBackPressed());
 
 
         playerTwoButton.setOnTouchListener(this);
-        playerTwoButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        playerTwoButton.setOnClickListener(v -> {
 
-                if (TextUtils.isEmpty(playerTwoName.getText().toString())) {
-                    Toast.makeText(getBaseContext(), "Enter Name", Toast.LENGTH_LONG).show();
-                } else {
+            if (TextUtils.isEmpty(playerTwoName.getText().toString())) {
+                Toast.makeText(getBaseContext(), "Enter Name", Toast.LENGTH_LONG).show();
+            } else {
 
-                    playerTwo = playerTwoName.getText().toString();
-                    Intent intent = new Intent(OfflineGetPlayersNamesActivity.this,ChooseSymbolActivity.class);
-                    intent.putExtra("p1",playerOne);
-                    intent.putExtra("p2",playerTwo);
+                playerTwo = playerTwoName.getText().toString();
+                Intent intent = new Intent(OfflineGetPlayersNamesActivity.this,ChooseSymbolActivity.class);
+                intent.putExtra("p1",playerOne);
+                intent.putExtra("p2",playerTwo);
 
 
-                    startActivity(intent);
-                }
+                startActivity(intent);
             }
         });
 
     }
 
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouch(View v, MotionEvent event) {
 
-        if(islayout)
+        if(isLayout)
         {
             if (v == playerOneButton) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -115,8 +105,7 @@ public class OfflineGetPlayersNamesActivity extends AppCompatActivity implements
                 }
             }
         }
-        else if(!islayout)
-        {
+        else {
             if (v == playerTwoButton) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     v.setAlpha(0.5f);
@@ -138,18 +127,6 @@ public class OfflineGetPlayersNamesActivity extends AppCompatActivity implements
                 0,                 // toXDelta
                 view.getHeight(),  // fromYDelta
                 0);                // toYDelta
-        animate.setDuration(500);
-        animate.setFillAfter(true);
-        view.startAnimation(animate);
-    }
-
-    // slide the view from its current position to below itself
-    public void slideDown(View view) {
-        TranslateAnimation animate = new TranslateAnimation(
-                0,                 // fromXDelta
-                0,                 // toXDelta
-                0,                 // fromYDelta
-                view.getHeight()); // toYDelta
         animate.setDuration(500);
         animate.setFillAfter(true);
         view.startAnimation(animate);

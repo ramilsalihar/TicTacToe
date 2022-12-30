@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.ViewPropertyAnimatorCompat;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,7 +39,7 @@ public class OfflineGameMenuActivity extends AppCompatActivity implements View.O
         setContentView(R.layout.activity_offline_game_menu);
 
 
-        WithAFriendBtn = (Button) findViewById(R.id.btn_choice2_offline_menu);
+        WithAFriendBtn = findViewById(R.id.btn_choice2_offline_menu);
 
         SCREEN_SIZE =getScreenResolution(this);
 
@@ -50,12 +51,9 @@ public class OfflineGameMenuActivity extends AppCompatActivity implements View.O
             SET_TRANSLATE = -300;
         }
 
-        WithAFriendBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(OfflineGameMenuActivity.this,OfflineGetPlayersNamesActivity.class);
-               startActivity(intent);
-            }
+        WithAFriendBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(OfflineGameMenuActivity.this,OfflineGetPlayersNamesActivity.class);
+           startActivity(intent);
         });
 
     }
@@ -68,24 +66,22 @@ public class OfflineGameMenuActivity extends AppCompatActivity implements View.O
         Display display = wm.getDefaultDisplay();
         DisplayMetrics metrics = new DisplayMetrics();
         display.getMetrics(metrics);
-        int height = metrics.heightPixels;
 
         //  Toast.makeText(SplashActivity.this , "Screen height is : "+ height , Toast.LENGTH_SHORT).show();
 
-        return height ;
+        return metrics.heightPixels;
     }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
 
-        boolean animationStarted = false;
-        if (!hasFocus || animationStarted) {
+        if (!hasFocus) {
             return;
         }
 
         animate();
 
-        super.onWindowFocusChanged(hasFocus);
+        super.onWindowFocusChanged(true);
     }
 
     @Override
@@ -95,8 +91,8 @@ public class OfflineGameMenuActivity extends AppCompatActivity implements View.O
 
     private void animate() {
 
-        ImageView logoImageView = (ImageView) findViewById(R.id.img_logo_offline_menu);
-        ViewGroup container = (ViewGroup) findViewById(R.id.container_offline_menu);
+        ImageView logoImageView = findViewById(R.id.img_logo_offline_menu);
+        ViewGroup container = findViewById(R.id.container_offline_menu);
 
         ViewCompat.animate(logoImageView)
                 .translationY(SET_TRANSLATE)
@@ -125,6 +121,7 @@ public class OfflineGameMenuActivity extends AppCompatActivity implements View.O
     }
 
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         if (v == WithAFriendBtn) {
