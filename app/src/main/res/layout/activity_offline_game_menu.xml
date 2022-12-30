@@ -11,18 +11,19 @@
     <LinearLayout
         android:id="@+id/container_offline_menu"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="333dp"
         android:layout_gravity="center"
         android:gravity="center"
         android:orientation="vertical"
         android:paddingTop="68dp"
         tools:ignore="HardcodedText">
 
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="90dp"
+            android:layout_marginTop="100dp"
             android:alpha="0"
             android:fontFamily="@font/poppins_medium"
             android:text="Choose your play mode"
@@ -33,12 +34,11 @@
 
             tools:alpha="1" />
 
-
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_choice2_offline_menu"
             android:layout_width="175dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:background="@drawable/button_2"
             android:fontFamily="@font/poppins_medium"
             android:scaleX="0"
